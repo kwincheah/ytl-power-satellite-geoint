@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-11-08T18:50:24.609370",
+  "ticker": "6742.KL",
+  "company": "YTL Power International Berhad",
+  "asset": "YTL Green Data Center Park (Kulai, Johor)",
+  "coordinates": {
+    "lat": 1.62,
+    "lon": 103.52
+  },
+  "solar_farm": {
+    "area_2023_m2": 9800.0,
+    "area_2026_m2": 1035800.0,
+    "growth_m2": 1026000.0,
+    "est_capacity_mw": 103.6
+  },
+  "data_halls": {
+    "roof_area_2026_m2": 752000.0,
+    "operational_readiness": "High"
+  },
+  "financials": {
+    "price_2023_myr": 0.77,
+    "price_2026_myr": 5.01,
+    "gain_pct": 553.0
+  }
+}

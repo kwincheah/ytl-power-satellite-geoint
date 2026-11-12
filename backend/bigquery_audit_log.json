@@ -1,0 +1,310 @@
+[
+  {
+    "record": {
+      "timestamp": "2026-11-08T21:12:43.092374+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T21:12:43.092374+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T21:12:49.332269+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T21:12:35.771688+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T21:12:35.771688+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T21:12:42.011610+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T21:10:13.708624+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T21:10:13.708624+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T21:10:19.538834+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T21:10:05.975927+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T21:10:05.975927+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T21:10:12.754395+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:57:51.446690+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:57:51.446690+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:57:57.744378+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:57:44.569707+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:57:44.569707+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:57:50.492392+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:57:24.227529+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:57:24.227529+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:57:29.971104+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:57:17.074135+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:57:17.074135+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:57:23.277380+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:56:54.251243+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:56:54.251243+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:57:00.347979+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:56:45.011164+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:56:45.011164+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:56:52.666439+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:23:29.258014+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:23:29.258014+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:23:34.955285+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:23:22.323614+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:23:22.323614+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:23:28.102297+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:14:34.071399+00:00",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:14:34.071399+00:00'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:14:41.398957+00:00"
+  },
+  {
+    "record": {
+      "timestamp": "2026-11-08T20:13:48.610394Z",
+      "ticker": "6742.KL",
+      "company": "YTL Power International Berhad",
+      "asset_name": "YTL Green Data Center Park (Kulai, Johor)",
+      "solar_area_m2": 1358000.0,
+      "est_solar_capacity_mw": 135.8,
+      "data_hall_roof_m2": 953500.0,
+      "stock_price_myr": 5.01,
+      "stock_gain_pct": 550.6,
+      "coordinates": {
+        "latitude": 1.6225,
+        "longitude": 103.525
+      },
+      "satellite_sensor": "Sentinel-2 L2A (10m COG)"
+    },
+    "sql": "INSERT INTO `traffic_analytics.ytl_satellite_telemetry` \n(timestamp, ticker, company, asset_name, solar_area_m2, est_solar_capacity_mw, data_hall_roof_m2, stock_price_myr, stock_gain_pct)\nVALUES (\n    TIMESTAMP('2026-11-08T20:13:48.610394Z'),\n    '6742.KL',\n    'YTL Power International Berhad',\n    'YTL Green Data Center Park (Kulai, Johor)',\n    1358000.0,\n    135.8,\n    953500.0,\n    5.01,\n    550.6\n);",
+    "status": "COMMITTED",
+    "details": "Number of affected rows: 1",
+    "synced_at": "2026-11-08T20:13:56.118486Z"
+  }
+]

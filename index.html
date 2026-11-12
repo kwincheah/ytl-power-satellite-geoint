@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#0e131f">
+    <meta name="description" content="YTL Power (6742.KL) Satellite GEOINT — Earth observation and physical-to-financial verification platform at the Kulai Green DC Park and Solar Campus.">
+    <title>YTL Power (6742.KL) Satellite GEOINT — Physical-to-Financial Intelligence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="/static/styles.css">
+
+    <script>
+        (function () {
+            try {
+                var q = new URLSearchParams(location.search).get("theme");
+                var saved = q || localStorage.getItem("ytl_theme");
+                var system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+                document.documentElement.setAttribute("data-theme", saved || system);
+            } catch (e) { /* keep default */ }
+        })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<a class="skiplink" href="#capture">Skip to the satellite plate</a>
+
+<!-- =====================================================================
+     NAVIGATION BAR / MASTHEAD (Refactoring UI Elevated Header)
+     ===================================================================== -->
+<header class="top-nav">
+    <div class="brand">
+        <div class="brand__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <circle cx="12" cy="12" r="7.5"></circle>
+                <path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"></path>
+                <circle cx="12" cy="12" r="1.6" fill="currentColor"></circle>
+            </svg>
+        </div>
+        <div class="brand__text">
+            <div class="brand__title">
+                <span class="brand__name">YTL Power (6742.KL) Satellite GEOINT</span>
+                <span class="badge badge--success" id="statusBadge">
+                    <span class="status-dot"></span>
+                    <span id="statusState">Live orbit active</span>
+                </span>
+            </div>
+            <div class="brand__desc">
+                Earth Observation &amp; Capital Expenditure Verification &middot; Kulai Green Data Center Park (Johor)
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-controls">
+        <div class="quote-card">
+            <div class="quote-item">
+                <span class="quote-label">Bursa</span>
+                <span class="quote-val mono">6742.KL</span>
+            </div>
+            <div class="quote-item">
+                <span class="quote-label">Last Price</span>
+                <span class="quote-val mono" id="hudPrice">RM 5.01</span>
+            </div>
+            <div class="quote-item">
+                <span class="quote-label">&Delta; vs Baseline</span>
+                <span class="quote-val mono text-success" id="hudGain">+553.0%</span>
+            </div>
+        </div>
+
+        <!-- Refactoring UI Segmented Appearance Switcher -->
+        <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Appearance Mode">
+            <button type="button" class="theme-btn theme__btn" data-theme-val="light" aria-pressed="false">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <span>Light</span>
+            </button>
+            <button type="button" class="theme-btn theme__btn" data-theme-val="dark" aria-pressed="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <span>Dark</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="app-layout">
+
+    <!-- =================================================================
+         1. HERO STUDIO: Multi-Temporal Satellite Studio & Quarterly Filing
+         ================================================================= -->
+    <section class="card studio-card" id="capture" aria-labelledby="captureTitle">
+        <div class="card__header studio-header">
+            <div>
+                <h1 class="card__title" id="captureTitle">Multi-Temporal Satellite Studio</h1>
+                <p class="card__subtitle">
+                    Sentinel-2 L2A surface reflectance (10m GSD) &middot; Quarterly cloud-free passes, Mar 2023 &rarr; Aug 2026
+                </p>
+            </div>
+
+            <!-- Primary Layer Controls (Refactoring UI Segmented Tabs) -->
+            <div class="segmented-control layers-segmented" role="tablist" aria-label="Imagery Layer">
+                <button type="button" class="tab is-active" data-layer="split" role="tab" aria-selected="true">Before / After</button>
+                <button type="button" class="tab" data-layer="annotated" role="tab" aria-selected="false">AI Overlay</button>
+                <button type="button" class="tab" data-layer="thermal" role="tab" aria-selected="false">Thermal Radiometry</button>
+                <button type="button" class="tab" data-layer="substation" role="tab" aria-selected="false">TNB Substation</button>
+                <button type="button" class="tab" data-layer="sar_composite" role="tab" aria-selected="false">Radar SAR</button>
+                <button type="button" class="tab" data-layer="difference" role="tab" aria-selected="false">Expansion Map</button>
+            </div>
+        </div>
+
+        <!-- Secondary Filter Pills Row -->
+        <div class="studio-subbar">
+            <span class="subbar-label">Feature Isolations:</span>
+            <div class="pill-group">
+                <button type="button" class="pill-btn tab" data-layer="solar_only">Solar Arrays</button>
+                <button type="button" class="pill-btn tab" data-layer="roof_only">Data Halls</button>
+                <button type="button" class="pill-btn tab" data-layer="yolo_annotated">YOLOv8 Segmentation</button>
+                <button type="button" class="pill-btn tab" data-layer="2026">Raw 2026 Pass</button>
+                <button type="button" class="pill-btn tab" data-layer="2023">Raw 2023 Baseline</button>
+            </div>
+        </div>
+
+        <div class="studio-body">
+            <!-- Left: Satellite Viewport & Split Curtain -->
+            <div class="viewport-column">
+                <figure class="viewport-stage" id="satelliteViewport">
+                    <div class="split" id="splitContainer">
+                        <div class="split__layer">
+                            <img class="split__img" id="beforeImage" src="/api/layers/2023" alt="March 2023 Baseline Canopy">
+                        </div>
+                        <div class="split__layer split__layer--after" id="layerAfter">
+                            <img class="split__img" id="afterImage" src="/api/layers/annotated" alt="Current Observation Overlay">
+                        </div>
+                    </div>
+
+                    <img class="plate__single" id="singleLayerImage" alt="" hidden>
+
+                    <!-- Subtle Glass Overlays -->
+                    <div class="glass-tag glass-tag--baseline">
+                        <span class="glass-tag__date mono">16 Mar 2023</span>
+                        <span class="glass-tag__label">Baseline Canopy</span>
+                    </div>
+                    <div class="glass-tag glass-tag--observation">
+                        <span class="glass-tag__date mono" id="plateDateB">22 Aug 2026</span>
+                        <span class="glass-tag__label" id="plateTagB">Q4 FY26 (Live)</span>
+                    </div>
+
+                    <!-- Refactoring UI Curtain Slider -->
+                    <div class="curtain-divider" id="curtainDivider" role="slider" tabindex="0" aria-label="Curtain Split Slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                        <div class="curtain-handle" title="Drag horizontally to compare">
+                            <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor" aria-hidden="true">
+                                <path d="M4 1h1.5v12H4zM6.5 1H8v12H6.5z"/>
+                            </svg>
+                            <span class="curtain-readout mono" id="splitReadout">50%</span>
+                        </div>
+                    </div>
+
+                    <div class="coordinate-pill mono" id="cursorReadout">1.6225&deg; N &middot; 103.5250&deg; E</div>
+                </figure>
+
+                <!-- Plate Instrument Footer -->
+                <div class="plate-footer">
+                    <div class="plate-metadata">
+                        <span class="sensor-badge mono" id="stripSensor">Sentinel-2C L2A</span>
+                        <span>10m GSD</span>
+                        <span>Cloud: <strong class="mono" id="stripCloud">2.4%</strong></span>
+                        <span class="scale-bar">
+                            <i class="scale-bar__line" id="scaleBarBar" aria-hidden="true"></i>
+                            <span class="mono" id="scaleBarLabel">500 m</span>
+                        </span>
+                    </div>
+
+                    <div class="plate-stepper">
+                        <button type="button" class="stepper-btn" id="btnPrevQuarter" aria-label="Previous Quarter" title="Previous quarter">&#9664;</button>
+                        <span class="stepper-quarter mono" id="plateQuarter">Q4 FY26</span>
+                        <button type="button" class="stepper-btn" id="btnNextQuarter" aria-label="Next Quarter" title="Next quarter">&#9654;</button>
+                        <span class="plate-layer-indicator" id="plateLayerName">Before / after comparison</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Contextual Bursa Financial Filing Column -->
+            <aside class="filing-column" aria-labelledby="filingTitle">
+                <div class="filing-card">
+                    <div class="filing-header">
+                        <div>
+                            <span class="section-tag">Corporate Disclosure</span>
+                            <h2 class="filing-title" id="filingTitle">Bursa Quarterly Filing</h2>
+                        </div>
+                        <span class="badge badge--neutral mono" id="filingQuarter">Q4 FY26</span>
+                    </div>
+
+                    <dl class="data-sheet">
+                        <div class="data-row">
+                            <dt>QR Announcement</dt>
+                            <dd class="mono" id="bursaDateVal">27 Aug 2026</dd>
+                        </div>
+                        <div class="data-row">
+                            <dt>Period Ended</dt>
+                            <dd class="mono" id="bursaPeriodVal">30 Jun 2026</dd>
+                        </div>
+                        <div class="data-row">
+                            <dt>Group Revenue</dt>
+                            <dd class="mono text-primary-val" id="bursaRevVal">RM 6,250 M</dd>
+                        </div>
+                        <div class="data-row">
+                            <dt>Group Net Profit (PATAMI)</dt>
+                            <dd class="mono text-success font-semibold" id="bursaPatamiVal">RM 1,120 M</dd>
+                        </div>
+                        <div class="data-row">
+                            <dt>PowerSeraya Contribution</dt>
+                            <dd class="mono" id="bursaPsVal">RM 775 M</dd>
+                        </div>
+                        <div class="data-row">
+                            <dt>Kulai DC + Solar Campus</dt>
+                            <dd class="mono text-highlight font-semibold" id="bursaKulaiVal">RM 288.0 M</dd>
+                        </div>
+                        <div class="data-row data-row--highlight">
+                            <dt>Pacing vs. Guidance</dt>
+                            <dd class="mono text-success font-semibold" id="bursaPacingVal">+130 d &middot; Ahead of Schedule</dd>
+                        </div>
+                    </dl>
+
+                    <div class="filing-memo">
+                        <div class="memo-title">Sell-Side Verification</div>
+                        <p class="memo-text" id="filingRead">
+                            Physical delivery leads sell-side commercial-operation guidance by 130 days.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Integrated 14-Quarter Timeline Rail -->
+        <div class="timeline-container">
+            <div class="timeline-meta">
+                <div class="timeline-label-group">
+                    <span class="section-tag">Observation Timeline</span>
+                    <div class="segmented-control segmented-control--sm">
+                        <button type="button" class="mode is-active" id="btnScrubber14Q">All 14 Quarters</button>
+                        <button type="button" class="mode" id="btnScrubber5M">5 Key Milestones</button>
+                    </div>
+                </div>
+                <div class="milestone-text mono" id="epochMilestoneText">
+                    Q4 FY26 (2026-08-22): &gt;100 MW utility solar online; 752k m&sup2; data halls ready.
+                </div>
+            </div>
+
+            <!-- Quarter Ticks Rail (Rendered dynamically by app.js) -->
+            <div class="timeline-rail epoch-pills" id="epochPillsContainer" role="group" aria-label="Quarter Selection">
+                <!-- Ticks rendered by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+         2. PHYSICAL FOOTPRINT: Executive KPI Cards (Refactoring UI Depth)
+         ================================================================= -->
+    <section class="kpi-section" aria-labelledby="deliveryTitle">
+        <div class="section-header">
+            <h2 class="section-heading" id="deliveryTitle">Physical Footprint Verification</h2>
+            <p class="section-subheading">
+                Computer vision segmentation of utility solar arrays and data-hall roofs against baseline.
+                <span class="mono text-secondary ml-2" id="ledgerAsOf">As of 2026-08-22</span>
+            </p>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="card kpi-card">
+                <span class="kpi-label">Utility Solar Area</span>
+                <div class="kpi-metric">
+                    <span class="kpi-num mono" id="kpiSolarVal">1,035,800</span>
+                    <span class="kpi-unit">m&sup2;</span>
+                </div>
+                <div class="kpi-delta text-success" id="kpiSolarDelta">
+                    &uarr; +1,026,000 m&sup2; vs baseline
+                </div>
+            </div>
+
+            <div class="card kpi-card">
+                <span class="kpi-label">Installed Solar Capacity</span>
+                <div class="kpi-metric">
+                    <span class="kpi-num mono" id="kpiCapacityVal">~103.6</span>
+                    <span class="kpi-unit">MW</span>
+                </div>
+                <div class="kpi-delta text-secondary" id="kpiCapacityPct">
+                    20.7% of 500 MW campus target
+                </div>
+            </div>
+
+            <div class="card kpi-card">
+                <span class="kpi-label">Data-Hall Structural Roof</span>
+                <div class="kpi-metric">
+                    <span class="kpi-num mono" id="kpiRoofVal">752,000</span>
+                    <span class="kpi-unit">m&sup2;</span>
+                </div>
+                <div class="kpi-delta text-success" id="kpiRoofDelta">
+                    &uarr; +731,400 m&sup2; vs baseline
+                </div>
+            </div>
+
+            <div class="card kpi-card">
+                <span class="kpi-label">Equity Valuation (6742.KL)</span>
+                <div class="kpi-metric">
+                    <span class="kpi-unit mr-1">RM</span>
+                    <span class="kpi-num mono" id="kpiStockVal">5.01</span>
+                </div>
+                <div class="kpi-delta text-success" id="kpiStockGain">
+                    &uarr; +553.0% since March 2023
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+         3. TRACK & VALUATION: Correlation Chart & Financial Engine
+         ================================================================= -->
+    <section class="analytics-grid" aria-labelledby="trackTitle">
+        <!-- Left: Stock Price vs Infrastructure Delivery Chart -->
+        <div class="card chart-card">
+            <div class="card__header">
+                <div>
+                    <h2 class="card__title" id="trackTitle">Physical Delivery vs. Share Price</h2>
+                    <p class="card__subtitle">Bursa 6742.KL daily close vs. verified installed solar megawatts</p>
+                </div>
+                <div class="chart-legend-box">
+                    <span class="legend-chip"><i class="chip-color chip--blue"></i> Price (MYR, left)</span>
+                    <span class="legend-chip"><i class="chip-color chip--green"></i> Solar (MW, right)</span>
+                </div>
+            </div>
+
+            <div class="chart-canvas-wrap">
+                <canvas id="correlationChart" role="img" aria-label="Correlation chart between stock price and installed solar capacity"></canvas>
+            </div>
+
+            <div class="milestones-bar">
+                <div class="milestone-item"><strong class="mono">Mar 2023</strong> RM 0.77 &middot; Baseline</div>
+                <div class="milestone-item"><strong class="mono">May 2024</strong> RM 4.88 &middot; Phase 1 COD</div>
+                <div class="milestone-item text-success"><strong class="mono">Aug 2026</strong> RM 5.01 &middot; +553.0%</div>
+            </div>
+        </div>
+
+        <!-- Right: Physical-to-Financial Valuation Model -->
+        <div class="card model-card">
+            <div class="card__header">
+                <div>
+                    <h2 class="card__title">Physical-to-Financial Valuation Model</h2>
+                    <p class="card__subtitle">Capacity translation &amp; sell-side consensus pacing</p>
+                </div>
+                <span class="badge badge--success mono" id="consensusVarianceBadge">+130 d Ahead of Guidance</span>
+            </div>
+
+            <dl class="model-metrics">
+                <div class="model-row">
+                    <dt>Critical IT Load Capacity</dt>
+                    <dd class="mono font-semibold" id="finCriticalIt">~872.9 MW</dd>
+                </div>
+                <div class="model-row">
+                    <dt>AI Rack Equivalents (GB200/DGX)</dt>
+                    <dd class="mono" id="finRackCapacity">34,916 racks</dd>
+                </div>
+                <div class="model-row">
+                    <dt>Contracted Run-Rate ARR</dt>
+                    <dd class="mono text-primary-val font-semibold" id="finAnnualRev">RM 6,292,700,000</dd>
+                </div>
+                <div class="model-row model-row--sub">
+                    <dt>USD Run-Rate &amp; EBITDA</dt>
+                    <dd class="mono text-muted" id="finAnnualRevUsd">&asymp; $1,414.1 M USD run-rate &middot; EBITDA RM 4,276 M</dd>
+                </div>
+                <!-- Disaggregated Tenant Allocation -->
+                <div class="tenant-strip">
+                    <div class="tenant-col">
+                        <span class="tenant-tag text-secondary">Sea Ltd (Phase 1):</span>
+                        <strong class="mono" id="tenantSeaMw">~48.0 MW</strong>
+                        <span class="mono text-xs text-muted" id="tenantSeaRev">RM 295 M ARR</span>
+                    </div>
+                    <div class="tenant-col">
+                        <span class="tenant-tag text-primary-val">NVIDIA DGX (Ph 2/3):</span>
+                        <strong class="mono" id="tenantNvidiaMw">~824.9 MW</strong>
+                        <span class="mono text-xs text-muted" id="tenantNvidiaRev">RM 5,998 M ARR</span>
+                    </div>
+                    <div class="tenant-col tenant-col--rate">
+                        <span class="badge badge--neutral mono" id="tenantBlendedRate">$152.8/kW/mo blended</span>
+                    </div>
+                </div>
+                <div class="model-row">
+                    <dt>Solar Power Avoided Cost</dt>
+                    <dd class="mono text-highlight font-semibold" id="finEnergySavings">RM 17.16 M / yr</dd>
+                </div>
+                <div class="model-row model-row--sub">
+                    <dt>Clean Gen &amp; Carbon Offset</dt>
+                    <dd class="mono text-muted" id="finCarbonOffset">142.9k MWh &middot; 97.2k tCO&#8322;</dd>
+                </div>
+                <div class="model-row model-row--highlight">
+                    <dt>Consensus Commercial Check</dt>
+                    <dd class="mono text-success font-semibold" id="finConsensusStatus">Ahead +130 Days</dd>
+                </div>
+            </dl>
+
+            <!-- Sensitivity Controls (Refactoring UI Form Design) -->
+            <div class="sensitivity-panel">
+                <div class="sensitivity-title">Valuation Sensitivity Parameters</div>
+                <div class="sensitivity-fields">
+                    <div class="field-item">
+                        <label class="field-label" for="simLeaseRate">Tariff ($/kW/mo)</label>
+                        <input class="field-input mono" type="number" id="simLeaseRate" value="135" min="80" max="250" step="5">
+                    </div>
+                    <div class="field-item">
+                        <label class="field-label" for="simUsdMyr">FX (USD/MYR)</label>
+                        <input class="field-input mono" type="number" id="simUsdMyr" value="4.45" min="3.8" max="5.2" step="0.05">
+                    </div>
+                    <div class="field-item">
+                        <label class="field-label" for="simPue">Target PUE</label>
+                        <input class="field-input mono" type="number" id="simPue" value="1.22" min="1.1" max="1.5" step="0.01">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnSimulateFin">Re-run Model</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+         3b. INSTITUTIONAL SOTP: Sum-of-the-Parts Valuation Engine
+         ================================================================= -->
+    <section class="card sotp-card" aria-labelledby="sotpTitle">
+        <div class="card__header sotp-header">
+            <div>
+                <div class="sotp-badge-row">
+                    <span class="section-tag">Sum-of-the-Parts Equity Valuation</span>
+                    <span class="badge badge--success mono" id="sotpUpside">+122.0% Implied Upside</span>
+                </div>
+                <h2 class="card__title" id="sotpTitle">Consolidated SOTP Target Price Model</h2>
+                <p class="card__subtitle">
+                    Multi-segment valuation bridging orbital physical AI DC delivery with regulated utility cash flows.
+                </p>
+            </div>
+            <div class="sotp-target-callout">
+                <div class="sotp-target-item">
+                    <span class="target-label">Implied Target Price</span>
+                    <span class="target-val mono text-success font-semibold" id="sotpTargetPrice">RM 11.12</span>
+                </div>
+                <div class="sotp-target-item">
+                    <span class="target-label">Current Market Price</span>
+                    <span class="target-val mono" id="sotpCurrentPrice">RM 5.01</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sotp-metrics-strip">
+            <div class="sotp-metric-cell">
+                <span class="cell-label">Consolidated EV</span>
+                <span class="cell-val mono font-semibold" id="sotpGroupEv">RM 122,170 M</span>
+            </div>
+            <div class="sotp-metric-cell">
+                <span class="cell-label">Less Net Debt</span>
+                <span class="cell-val mono text-danger font-semibold" id="sotpNetDebt">-RM 31,500 M</span>
+            </div>
+            <div class="sotp-metric-cell">
+                <span class="cell-label">Implied Equity Value</span>
+                <span class="cell-val mono text-primary-val font-semibold" id="sotpEquityVal">RM 90,670 M</span>
+            </div>
+            <div class="sotp-metric-cell">
+                <span class="cell-label">Diluted Shares</span>
+                <span class="cell-val mono font-semibold">8,154.0 M</span>
+            </div>
+        </div>
+
+        <div class="sotp-table-wrapper">
+            <table class="sotp-table" id="sotpSegmentsTable">
+                <thead>
+                    <tr>
+                        <th>Operating Division / Asset Segment</th>
+                        <th>Valuation Basis</th>
+                        <th>Multiple Applied</th>
+                        <th>Implied Segment EV</th>
+                        <th>% of EV</th>
+                        <th>Target Price / Share</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamically populated by applySotp() in app.js -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="sotp-sensitivity-bar">
+            <div class="sensitivity-title">SOTP Peer Multiple Sensitivity</div>
+            <div class="sotp-fields">
+                <div class="field-item">
+                    <label class="field-label" for="simDcMultiple">Hyperscale AI DC Multiple</label>
+                    <input class="field-input mono" type="number" id="simDcMultiple" value="18.0" min="12.0" max="25.0" step="0.5">
+                </div>
+                <div class="field-item">
+                    <label class="field-label" for="simPsMultiple">PowerSeraya Multiple</label>
+                    <input class="field-input mono" type="number" id="simPsMultiple" value="7.0" min="4.0" max="10.0" step="0.5">
+                </div>
+                <div class="field-item">
+                    <label class="field-label" for="simWessexMultiple">Wessex Water EV/RCV</label>
+                    <input class="field-input mono" type="number" id="simWessexMultiple" value="1.05" min="0.8" max="1.4" step="0.05">
+                </div>
+                <button type="button" class="btn btn-primary" id="btnSimulateSotp">Re-calculate Target</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+         4. OPERATIONAL VERIFICATION: Power Grid & Thermal Radiometry
+         ================================================================= -->
+    <section class="verification-grid" aria-labelledby="powerTitle">
+        <!-- Thermal Radiometry Card -->
+        <div class="card verification-card">
+            <div class="verification-badge-row">
+                <span class="section-tag">Thermal Radiometry</span>
+                <span class="badge badge--danger"><span class="status-dot dot--danger"></span> Heat Dissipation Confirmed</span>
+            </div>
+            <h3 class="verification-heading" id="powerTitle">Active Thermal IT Load</h3>
+            <div class="verification-metric mono" id="finThermalLoad">647.7 MW (74.2%)</div>
+            <p class="verification-desc" id="finThermalPlume">
+                Calibrated cooling-tower heat plumes (+5.2 K to +7.8 K over ambient) confirm that servers are actively drawing power.
+            </p>
+            <div class="verification-foot text-muted">
+                Sensor: NASA ECOSTRESS (70m) &amp; Landsat-9 TIRS &middot; PUE 1.21 verified
+            </div>
+        </div>
+
+        <!-- TNB Substation GIS Card -->
+        <div class="card verification-card">
+            <div class="verification-badge-row">
+                <span class="section-tag">High-Voltage Interconnect</span>
+                <span class="badge badge--success"><span class="status-dot dot--success"></span> Grid Synchronised</span>
+            </div>
+            <h3 class="verification-heading">TNB 275/500 kV Main Intake (PMU)</h3>
+            <div class="verification-metric mono" id="finSubstationCap">600 MVA (3 of 4 bays)</div>
+            <p class="verification-desc" id="finSubstationStatus">
+                Synchronized dual-busbar feed on the Peninsular Western 500kV backbone; utility energisation complete.
+            </p>
+            <div class="verification-foot text-muted">
+                PMU Mahsan (TNB-PMU-JOHOR-KULAI-6742) &middot; 220 MVA expansion headroom
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+         5. PROVENANCE & TECHNICAL LAB (Refactoring UI Drawer & Export Bar)
+         ================================================================= -->
+    <section class="card provenance-card" id="provenance" aria-labelledby="provenanceTitle">
+        <div class="card__header">
+            <div>
+                <h2 class="card__title" id="provenanceTitle">Institutional Data Feeds &amp; Provenance</h2>
+                <p class="card__subtitle">Mosaic-theory compliant: public satellite data, public filings, zero material non-public information (MNPI).</p>
+            </div>
+            <span class="badge badge--neutral mono">CFA Std. II(A)</span>
+        </div>
+
+        <div class="export-bar">
+            <div class="export-bar__text">
+                <strong>Quant &amp; Fund Feeds</strong>
+                <span>Download point-in-time series, features, and audit memorandums</span>
+            </div>
+            <div class="export-bar__actions">
+                <a class="btn btn-primary" href="/api/quant/export/pit-csv">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+                    Bitemporal PIT CSV
+                </a>
+                <a class="btn btn-secondary" href="/api/quant/export/csv">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14"></path></svg>
+                    Quant Features CSV
+                </a>
+                <button type="button" class="btn btn-secondary" id="btnExportReport">Audit Brief</button>
+                <button type="button" class="btn btn-secondary" id="btnDispatchAlert">Dispatch Webhook</button>
+            </div>
+        </div>
+
+        <!-- Collapsible Technical Lab Drawer -->
+        <details class="tech-drawer" id="advancedDrawer">
+            <summary class="tech-drawer__summary">
+                <span class="drawer-title">Advanced Computer Vision &amp; Pipeline Instruments</span>
+                <span class="drawer-badge">5 parameters &middot; 5 actions</span>
+            </summary>
+
+            <div class="tech-drawer__content">
+                <div class="slider-grid">
+                    <div class="slider-group">
+                        <div class="group-title">Photovoltaic Spectral Filter</div>
+                        <label class="slider-item">
+                            <span class="slider-label">Max Brightness Ceiling: <strong class="mono" id="valSolarV">75</strong></span>
+                            <input type="range" id="sliderSolarV" min="40" max="120" value="75">
+                        </label>
+                        <label class="slider-item">
+                            <span class="slider-label">Max Color Saturation: <strong class="mono" id="valSolarS">120</strong></span>
+                            <input type="range" id="sliderSolarS" min="50" max="180" value="120">
+                        </label>
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="group-title">Data-Hall Roof Segmentation</div>
+                        <label class="slider-item">
+                            <span class="slider-label">Min Metallic Reflectance: <strong class="mono" id="valRoofV">175</strong></span>
+                            <input type="range" id="sliderRoofV" min="130" max="220" value="175">
+                        </label>
+                        <label class="slider-item">
+                            <span class="slider-label">Min Cluster Area: <strong class="mono" id="valMinSolar">200</strong> px</span>
+                            <input type="range" id="sliderMinSolar" min="50" max="600" value="200" step="10">
+                        </label>
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="group-title">Power Conversion Factor</div>
+                        <label class="slider-item">
+                            <span class="slider-label">Capacity per 10,000 m&sup2;: <strong class="mono" id="valMwPerHa">1.0</strong> MW</span>
+                            <input type="range" id="sliderMwPerHa" min="0.5" max="1.5" value="1.0" step="0.05">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="tech-actions">
+                    <button type="button" class="btn btn-primary" id="btnRunAnalysis">Run CV Re-analysis</button>
+                    <button type="button" class="btn btn-secondary" id="btnResetDefaults">Reset Parameters</button>
+                    <button type="button" class="btn btn-secondary" id="btnToggleEngine">Switch to YOLO Engine</button>
+                    <button type="button" class="btn btn-secondary" id="btnTriggerPipeline">Trigger Pipeline</button>
+                    <button type="button" class="btn btn-secondary" id="btnSyncBigQuery">Commit Telemetry Row</button>
+                </div>
+
+                <div class="pipeline-status-text mono">
+                    Engine: <span id="activeEngineText">Spectral morphological CV</span> &middot;
+                    Platform: <span id="hudGcpStatus">Local Orchestrator</span> &middot;
+                    Status: <span id="pipelineTriggerStatus">Idle</span>
+                </div>
+
+                <div class="schema-preview">
+                    <div class="schema-title">GoogleSQL / BigQuery Telemetry Schema</div>
+                    <pre class="code-box mono" id="bigqueryJsonPreview">Loading telemetry preview&hellip;</pre>
+                </div>
+
+                <div class="stac-table-wrap">
+                    <div class="schema-title">STAC Pass Catalogue</div>
+                    <table class="stac-table" id="sceneCatalogue">
+                        <thead>
+                            <tr><th>Pass Date</th><th>Platform</th><th>Cloud Cover</th><th>Milestone</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="4" class="mono">Loading catalogue&hellip;</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+
+        <div class="provenance-footer">
+            <span class="mono text-muted">Cryptographic Provenance SHA-256:</span>
+            <span class="mono text-secondary" id="mosaicHashText">b3a886f4cb9c8916e7dd7cefd9480fae6ecbb9475176b6a0ff3e5513abec8b6c</span>
+        </div>
+    </section>
+
+    <footer class="app-footer">
+        <p>YTL Power International Berhad (6742.KL) &middot; Green Data Center Park, Kulai, Johor &middot; 1.6225&deg; N, 103.5250&deg; E</p>
+        <p>Sentinel-2 L2A BOA Surface Reflectance &middot; ESA Copernicus WGS84 &middot; No material non-public information.</p>
+    </footer>
+</main>
+
+<div id="toastContainer" class="toast-stack" role="status" aria-live="polite"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

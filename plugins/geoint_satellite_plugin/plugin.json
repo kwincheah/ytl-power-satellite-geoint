@@ -1,0 +1,18 @@
+{
+  "id": "geoint_satellite_plugin",
+  "name": "Satellite GEOINT & Earth Observation",
+  "version": "1.0.0",
+  "author": "YTL Power & Apex Vision Lab",
+  "description": "Satellite STAC scene ingestion, multispectral solar/roof segmentation, and physical-to-financial capacity estimation.",
+  "category": "Earth Observation",
+  "min_sdk_version": "1.0.0",
+  "entrypoint": "__init__.py",
+  "tags": [
+    "satellite",
+    "geoint",
+    "sentinel",
+    "solar",
+    "photovoltaic",
+    "earth-observation"
+  ]
+}

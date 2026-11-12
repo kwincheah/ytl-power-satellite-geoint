@@ -1,0 +1,45 @@
+# Google Cloud Build CI/CD Pipeline
+# Builds the container image and deploys to Google Cloud Run
+
+steps:
+  # 1. Build the container image in Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ytl-geoint:$COMMIT_SHA'
+      - '-t'
+      - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ytl-geoint:latest'
+      - '.'
+
+  # 2. Push image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ytl-geoint:latest'
+
+  # 3. Deploy to Google Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'ytl-geoint-service'
+      - '--image=$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ytl-geoint:latest'
+      - '--region=$_REGION'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--memory=1Gi'
+      - '--cpu=1'
+      # --update-env-vars keeps ADMIN_TOKEN, which deploy_gcp.sh / deploy_gcp.ps1 set on the service
+      - '--update-env-vars=GCP_PROJECT_ID=$PROJECT_ID,BIGQUERY_DATASET=traffic_analytics.ytl_satellite_telemetry'
+
+substitutions:
+  _REGION: 'asia-southeast1' # Singapore / Johor low-latency region
+  _REPO_NAME: 'geoint-containers'
+
+images:
+  - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ytl-geoint:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
